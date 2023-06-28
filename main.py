@@ -130,19 +130,23 @@ class Labyrinth:
             # Add new nodes to be explored
             children = []
 
-            # Rotate from horizontal to vertical
-            if currentNode.orientation == 'h':
-                if currentNode.position[0] - 1 > 0 and currentNode.position[0] + 1 < len(self.labyrinth) - 1:
-                    if self.labyrinth[currentNode.position[0] - 1][currentNode.position[1]] == '.' and \
-                            self.labyrinth[currentNode.position[0] + 1][currentNode.position[1]] == '.':
+            # Rotations
+            if currentNode.position[0] - 1 >= 0 and currentNode.position[0] + 1 < len(self.labyrinth) - 1 and \
+                    currentNode.position[1] - 1 >= 0 and currentNode.position[1] + 1 < len(self.labyrinth[0]) - 1:
+                # Check if the rod has space to rotate
+                valid = True
+                for checkMoves in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
+                    checkPosition = (currentNode.position[0] + checkMoves[0], currentNode.position[1] + checkMoves[1])
+                    if self.labyrinth[checkPosition[0]][checkPosition[1]] != '.':
+                        valid = False
+
+                if valid:
+                    # Horizontal to vertical
+                    if currentNode.orientation == 'h':
                         newNode = Node(currentNode, currentNode.position, 'v')
                         children.append(newNode)
-
-            # Rotate from vertical to horizontal
-            elif currentNode.orientation == 'v':
-                if currentNode.position[1] - 1 > 0 and currentNode.position[1] + 1 < len(self.labyrinth[0]) - 1:
-                    if self.labyrinth[currentNode.position[0]][currentNode.position[1] - 1] == '.' and \
-                            self.labyrinth[currentNode.position[0]][currentNode.position[1] + 1] == '.':
+                    # Vertical to horizontal
+                    elif currentNode.orientation == 'v':
                         newNode = Node(currentNode, currentNode.position, 'h')
                         children.append(newNode)
 
