@@ -201,7 +201,7 @@ class Labyrinth:
         for i in range(len(path)):
             print("\t> Moves: {}".format(i))
             print(Labyrinth(self.labyrinth, path[i][0][1], path[i][0][0], path[i][1]))
-        print("Done solving!\n")
+        print("Done solving!")
 
     def __str__(self):
         """
