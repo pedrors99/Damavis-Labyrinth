@@ -131,8 +131,8 @@ class Labyrinth:
             children = []
 
             # Rotations
-            if currentNode.position[0] - 1 >= 0 and currentNode.position[0] + 1 < len(self.labyrinth) - 1 and \
-                    currentNode.position[1] - 1 >= 0 and currentNode.position[1] + 1 < len(self.labyrinth[0]) - 1:
+            if currentNode.position[0] - 1 >= 0 and currentNode.position[0] + 1 < len(self.labyrinth) and \
+                    currentNode.position[1] - 1 >= 0 and currentNode.position[1] + 1 < len(self.labyrinth[0]):
                 # Check if the rod has space to rotate
                 valid = True
                 for checkMoves in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
