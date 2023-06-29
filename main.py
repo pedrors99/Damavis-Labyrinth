@@ -197,9 +197,11 @@ class Labyrinth:
         """
         Displays the solution indicated in path
         """
+        print("\nSolving Labyrinth...\n")
         for i in range(len(path)):
-            print("Moves: {}".format(i))
+            print("\t> Moves: {}".format(i))
             print(Labyrinth(self.labyrinth, path[i][0][1], path[i][0][0], path[i][1]))
+        print("Done solving!\n")
 
     def __str__(self):
         """
@@ -254,3 +256,19 @@ labyrinth4 = [[".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
               [".", ".", ".", ".", ".", ".", ".", ".", ".", "."]]
 labyrinth = Labyrinth(labyrinth4)
 print("Labyrinth 4 results:", labyrinth.solve(False))
+
+# Bonus
+
+labyrinth5 = [[".", ".", ".", "#", ".", ".", ".", ".", ".", ".", "."],
+              [".", ".", ".", "#", ".", ".", ".", "#", ".", ".", "."],
+              [".", ".", ".", "#", ".", ".", ".", "#", ".", ".", "."],
+              [".", "#", "#", "#", ".", "#", "#", "#", "#", "#", "."],
+              [".", "#", ".", ".", ".", ".", ".", ".", ".", "#", "."],
+              [".", "#", ".", ".", ".", "#", ".", ".", ".", "#", "."],
+              [".", "#", ".", ".", ".", "#", ".", ".", ".", "#", "."],
+              [".", "#", "#", "#", "#", "#", "#", "#", ".", "#", "."],
+              [".", ".", ".", ".", ".", "#", ".", ".", ".", "#", "."],
+              [".", ".", ".", ".", ".", "#", ".", ".", ".", "#", "."],
+              [".", ".", ".", ".", ".", ".", ".", ".", ".", "#", "."]]
+labyrinth = Labyrinth(labyrinth5)
+print("Labyrinth 5 results:", labyrinth.solve(True))
